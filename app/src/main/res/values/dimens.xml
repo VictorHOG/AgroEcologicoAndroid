@@ -3,4 +3,5 @@
     <dimen name="widthButton">300dp</dimen>
     <dimen name="heightButton">56dp</dimen>
     <dimen name="marginBottomDefault">16dp</dimen>
+    <dimen name="marginAuthDefault">33dp</dimen>
 </resources>
