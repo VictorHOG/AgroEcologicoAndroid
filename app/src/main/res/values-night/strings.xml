@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AgroEcologico</string>
     <string name="hintAuthEmailUser">Dirección de correo electrónico</string>
     <string name="hintAuthPasswordUser">Contraseña</string>
     <string name="textButtonAuthLogin">Iniciar Sesión</string>

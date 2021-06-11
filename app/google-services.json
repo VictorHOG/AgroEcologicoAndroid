@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "300339546339",
+    "project_id": "agroecologico-2021",
+    "storage_bucket": "agroecologico-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300339546339:android:783cf1eaeb2ba355d39dd6",
+        "android_client_info": {
+          "package_name": "com.example.agroecologico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300339546339-feo9k95h4r77fc7eifjpspaifcbujma1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2MHkniduC2NDepLvFwxpBt39IJ-8suD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300339546339-feo9k95h4r77fc7eifjpspaifcbujma1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
