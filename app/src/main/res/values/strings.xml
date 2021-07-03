@@ -7,4 +7,9 @@
     <string name="textButtonAuthLoginGoogle">Conectar con Google</string>
     <string name="textButtonForgotPassword">¿Olvidaste tu contraseña?</string>
     <string name="textButtonSignUp">Inscribirse</string>
+    <string name="textButtonLogout">Cerrar sesión</string>
+    <string name="hintSignUpNameUser">Nombre completo</string>
+    <string name="textButtonReturnLogin">¿Ya tienes una cuenta? Iniciar sesión</string>
+    <string name="hintSignUpNumberUser">Número de telefono</string>
+    <string name="hintSignUpConfirmPasswordUser">Confirmar contraseña</string>
 </resources>
