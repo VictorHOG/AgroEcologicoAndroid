@@ -47,6 +47,10 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkField() {
+
+    }
+
     private fun setup() {
 
         val emailUser = mBinding.textInputEditTextAuthEmailUser
