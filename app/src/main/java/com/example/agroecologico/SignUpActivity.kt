@@ -1,20 +1,27 @@
 package com.example.agroecologico
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.agroecologico.FieldValidators.isStringContainNumber
 import com.example.agroecologico.FieldValidators.isStringContainSpecialCharacter
 import com.example.agroecologico.FieldValidators.isStringLowerAndUpperCase
 import com.example.agroecologico.FieldValidators.isValidEmail
 import com.example.agroecologico.databinding.ActivitySignUpBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class SignUpActivity : AppCompatActivity() {
+
     lateinit var mBinding: ActivitySignUpBinding
+    private val dataBase = FirebaseFirestore.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -25,6 +32,23 @@ class SignUpActivity : AppCompatActivity() {
         mBinding.buttonSignUp.setOnClickListener {
             if (isValidate()) {
                 Toast.makeText(this, "Validado", Toast.LENGTH_SHORT).show()
+                // Empieza el proceso de registro de usuario
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(mBinding.email.text.toString(),
+                    mBinding.password.text.toString()).addOnCompleteListener {
+
+                    if (it.isSuccessful) {
+                        Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show()
+                        dataBase.collection("Users").document(mBinding.email.text.toString()).set(
+                            hashMapOf("name" to  mBinding.userName.text.toString(),
+                            "email" to  mBinding.email.text.toString(),
+                            "phoneNumber" to  mBinding.phoneNumber.text.toString(),
+                            "isUser" to "2")// Especificando el tipo de usuario
+                        )
+                        showHome(it.result?.user?.email?:"", MainActivity.ProviderType.BASIC)
+                    } else {
+                        showAlert()
+                    }
+                }
             }
         }
     }
@@ -177,6 +201,24 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
+    private fun showAlert() {
 
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error")
+        builder.setMessage("Se ha producido un error registrando al usuario.")
+        builder.setPositiveButton("Aceptar", null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    private fun showHome(email: String, provider: MainActivity.ProviderType) {
+
+        val homeIntent = Intent(this, MainActivity::class.java).apply {
+            putExtra("email", email)
+            putExtra("provider", provider.name)
+        }
+        startActivity(homeIntent)
+        //finish()
+    }
 
 }
