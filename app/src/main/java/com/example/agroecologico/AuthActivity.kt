@@ -9,10 +9,12 @@ import androidx.core.app.ActivityOptionsCompat
 import com.example.agroecologico.databinding.ActivityAuthBinding
 import com.google.firebase.auth.FirebaseAuth
 import androidx.core.util.Pair
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AuthActivity : AppCompatActivity() {
 
     lateinit var mBinding: ActivityAuthBinding
+    private val dataBase = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,11 +66,28 @@ class AuthActivity : AppCompatActivity() {
                         passwordUser.text.toString()).addOnCompleteListener {
 
                             if (it.isSuccessful) {
-                                showHome(it.result?.user?.email.toString(), MainActivity.ProviderType.BASIC)
+                                checkUserAccessLevel(it.result?.user?.email.toString())
+                                //showHome(it.result?.user?.email.toString(), MainActivity.ProviderType.BASIC)
                             } else {
                                 showAlert()
                             }
                     }
+            }
+        }
+    }
+
+    private fun checkUserAccessLevel(email: String) {
+        dataBase.collection("Users").document(email).get().addOnSuccessListener {
+            val typeUser = it.get("isUser") as String?
+            if (typeUser == "0") {
+                val intent = Intent(this, AdminActivity::class.java)
+                startActivity(intent)
+            }else if (typeUser == "1") {
+                val intent = Intent(this, VendorActivity::class.java)
+                startActivity(intent)
+            }else if (typeUser == "2") {
+                val intent = Intent(this, ShopperActivity::class.java)
+                startActivity(intent)
             }
         }
     }

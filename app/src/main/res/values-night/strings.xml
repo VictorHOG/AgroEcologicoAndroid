@@ -12,4 +12,8 @@
     <string name="textButtonReturnLogin">¿Ya tienes una cuenta? Iniciar sesión</string>
     <string name="hintSignUpNumberUser">Número de telefono</string>
     <string name="hintSignUpConfirmPasswordUser">Confirmar contraseña</string>
+    <string name="item_home_title">Home</string>
+    <string name="item_offers_title">Ofertas</string>
+    <string name="item_buy_title">Comprar</string>
+    <string name="item_perfil_title">Perfil</string>
 </resources>
