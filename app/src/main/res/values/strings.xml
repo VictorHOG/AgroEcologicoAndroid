@@ -16,4 +16,9 @@
     <string name="item_offers_title">Ofertas</string>
     <string name="item_buy_title">Comprar</string>
     <string name="item_perfil_title">Perfil</string>
+    <string name="item_stalls_title">Puestos</string>
+    <string name="item_notifications_title">Notificaciones</string>
+    <string name="item_units_title">Unidades</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
