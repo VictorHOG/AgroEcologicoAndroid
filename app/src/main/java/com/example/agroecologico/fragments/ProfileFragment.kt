@@ -9,10 +9,10 @@ import com.example.agroecologico.R
 
 /**
  * A simple [Fragment] subclass.
- * Use the [PerfilFragment.newInstance] factory method to
+ * Use the [ProfileFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class PerfilFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

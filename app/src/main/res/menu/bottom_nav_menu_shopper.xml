@@ -21,7 +21,7 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/item_perfil"
+        android:id="@+id/item_profile_shopper"
         android:title="@string/item_perfil_title"
         android:icon="@drawable/ic_perfil"
         app:showAsAction="never"/>
