@@ -19,4 +19,7 @@
     <string name="item_stalls_title">Puestos</string>
     <string name="item_notifications_title">Notificaciones</string>
     <string name="item_units_title">Unidades</string>
+    <string name="hintStallName">Nombre del puesto de venta</string>
+    <string name="hintUserID">Numero de Identificación</string>
+    <string name="textButtonCreateStall">Crear Puesto de Venta</string>
 </resources>

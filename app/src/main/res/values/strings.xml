@@ -21,4 +21,7 @@
     <string name="item_units_title">Unidades</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hintStallName">Nombre del puesto de venta</string>
+    <string name="hintUserID">Numero de Identificación</string>
+    <string name="textButtonCreateStall">Crear Puesto de Venta</string>
 </resources>

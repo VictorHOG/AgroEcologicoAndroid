@@ -57,6 +57,7 @@ class AdminActivity : AppCompatActivity() {
                         .show(stallsFragment)
                         .commit()
                     activeFragment = stallsFragment
+                    mBinding.textViewToolbarAdmin.setText("Puestos de venta")
                     true
                 }
                 R.id.item_units -> {
@@ -65,6 +66,7 @@ class AdminActivity : AppCompatActivity() {
                         .show(unitsFragment)
                         .commit()
                     activeFragment = unitsFragment
+                    mBinding.textViewToolbarAdmin.setText("Unidades de venta")
                     true
                 }
                 R.id.item_notifications -> {
@@ -73,6 +75,7 @@ class AdminActivity : AppCompatActivity() {
                         .show(notificationsFragment)
                         .commit()
                     activeFragment = notificationsFragment
+                    mBinding.textViewToolbarAdmin.setText("Notificaciones")
                     true
                 }
                 R.id.item_profile_admin -> {
@@ -81,6 +84,7 @@ class AdminActivity : AppCompatActivity() {
                         .show(profileFragment)
                         .commit()
                     activeFragment = profileFragment
+                    mBinding.textViewToolbarAdmin.setText("Perfil de usuario")
                     true
                 }
                 else -> false
