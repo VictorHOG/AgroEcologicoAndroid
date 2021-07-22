@@ -10,12 +10,13 @@
     tools:context=".fragments.AdminStallsFragment">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonAdminCreateStall"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightButton"
         android:layout_marginTop="10dp"
         android:background="@drawable/round_button"
         android:text="@string/textButtonCreateStall"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdminCreateStall"
         tools:listitem="@layout/item_stall" />
 
 

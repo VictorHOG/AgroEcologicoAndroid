@@ -1,11 +1,13 @@
 package com.example.agroecologico.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.agroecologico.AdminCreateStallActivity
 import com.example.agroecologico.R
 import com.example.agroecologico.adapters.StallAdapter
 import com.example.agroecologico.data.Stall
@@ -36,6 +38,12 @@ class AdminStallsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
+        mBinding.buttonAdminCreateStall.setOnClickListener { openCreateStall() }
+    }
+
+    private fun openCreateStall() {
+        val intent = Intent(requireContext(), AdminCreateStallActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setUpRecyclerView() {
