@@ -17,6 +17,7 @@ class StallAdapter(options: FirestoreRecyclerOptions<Stall>) :
     inner class  StallViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val viewBinding = ItemStallBinding.bind(itemView)
 
+
         val stallItemName: TextView = viewBinding.stallItemName
         val stallItemDescription: TextView = viewBinding.stallItemDescription
     }

@@ -1,5 +1,7 @@
 package com.example.agroecologico
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -16,6 +18,9 @@ class AdminCreateStallActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityAdminCreateStallBinding
     private val dataBase = FirebaseFirestore.getInstance()
+
+    private var colorActive = Color.BLUE
+    private var colorInactive = Color.GRAY
 
     /*private var stallName: TextInputEditText? = null
     private var userID: TextInputEditText? = null
@@ -85,6 +90,8 @@ class AdminCreateStallActivity : AppCompatActivity() {
 
             if (isValidate()) {
 
+                mBinding.buttonCreateStall.backgroundTintList = ColorStateList.valueOf(colorActive)
+
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                     mBinding.createStallEmail.text.toString(),
                     mBinding.createStallPassword.text.toString()
@@ -120,6 +127,8 @@ class AdminCreateStallActivity : AppCompatActivity() {
                         showAlert()
                     }
                 }
+            } else {
+                mBinding.buttonCreateStall.backgroundTintList = ColorStateList.valueOf(colorInactive)
             }
         }
     }

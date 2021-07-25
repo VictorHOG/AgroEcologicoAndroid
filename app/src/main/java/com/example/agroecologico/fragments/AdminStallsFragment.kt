@@ -60,11 +60,11 @@ class AdminStallsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        stallAdapter!!.startListening()
+        stallAdapter.startListening()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        stallAdapter!!.stopListening()
+        stallAdapter.stopListening()
     }
 }
