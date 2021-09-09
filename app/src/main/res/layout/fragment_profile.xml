@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ProfileFragment">
+
+
+    <ImageButton
+        android:id="@+id/settingsProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:src="@drawable/ic_settings"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewProfile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsProfile"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textViewNameUserProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Nombre de usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
+
+    <TextView
+        android:id="@+id/textViewStreetAddressProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_street_address"
+        android:layout_marginLeft="@dimen/marginAuthDefault"
+        android:layout_marginRight="@dimen/marginAuthDefault"
+        android:layout_marginTop="10dp"
+        android:text="Direccion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNameUserProfile" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/marginAuthDefault"
+        android:layout_marginRight="@dimen/marginAuthDefault"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStreetAddressProfile" />
+
+    <TextView
+        android:id="@+id/textViewPhoneNumberProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_phone"
+        android:layout_marginLeft="@dimen/marginAuthDefault"
+        android:layout_marginRight="@dimen/marginAuthDefault"
+        android:layout_marginTop="10dp"
+        android:text="Telefono"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStreetAddressProfile" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/marginAuthDefault"
+        android:layout_marginRight="@dimen/marginAuthDefault"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNumberProfile" />
+
+    <TextView
+        android:id="@+id/textViewEmailProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_mail_outline"
+        android:layout_marginLeft="@dimen/marginAuthDefault"
+        android:layout_marginRight="@dimen/marginAuthDefault"
+        android:layout_marginTop="10dp"
+        android:text="Correo electronico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNumberProfile" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/marginAuthDefault"
+        android:layout_marginRight="@dimen/marginAuthDefault"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailProfile" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightButton"
+        android:layout_marginLeft="@dimen/marginAuthDefault"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="@dimen/marginAuthDefault"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_button"
+        android:text="Editar Perfil"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailProfile" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

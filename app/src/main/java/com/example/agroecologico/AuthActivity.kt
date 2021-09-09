@@ -1,5 +1,6 @@
 package com.example.agroecologico
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,8 +22,12 @@ class AuthActivity : AppCompatActivity() {
         mBinding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
+        session()
+
         // Setup
         setup()
+
+
 
         var signUp = mBinding.buttonSignUp
 
@@ -46,6 +51,21 @@ class AuthActivity : AppCompatActivity() {
 
             startActivity(intent, options.toBundle())
             //supportFinishAfterTransition()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mBinding.linearLayoutAuth.visibility = View.VISIBLE
+    }
+
+    private fun session() {
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val email = prefs.getString("email", null)
+
+        if (email != null) {
+            mBinding.linearLayoutAuth.visibility = View.INVISIBLE
+            checkUserAccessLevel(email)
         }
     }
 
@@ -80,13 +100,19 @@ class AuthActivity : AppCompatActivity() {
         dataBase.collection("Users").document(email).get().addOnSuccessListener {
             val typeUser = it.get("isUser") as String?
             if (typeUser == "0") {
-                val intent = Intent(this, AdminActivity::class.java)
+                val intent = Intent(this, AdminActivity::class.java).apply {
+                    putExtra("email", email)
+                }
                 startActivity(intent)
             }else if (typeUser == "1") {
-                val intent = Intent(this, VendorActivity::class.java)
+                val intent = Intent(this, VendorActivity::class.java).apply {
+                    putExtra("email", email)
+                }
                 startActivity(intent)
             }else if (typeUser == "2") {
-                val intent = Intent(this, ShopperActivity::class.java)
+                val intent = Intent(this, ShopperActivity::class.java).apply {
+                    putExtra("email", email)
+                }
                 startActivity(intent)
             }
         }

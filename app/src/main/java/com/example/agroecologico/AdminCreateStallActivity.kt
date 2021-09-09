@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.agroecologico.databinding.ActivityAdminCreateStallBinding
-import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -104,6 +103,11 @@ class AdminCreateStallActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
+
+                        sendNotification(mBinding.createStallEmail.text.toString())
+
+
+
                         dataBase.collection("Users")
                             .document(mBinding.createStallEmail.text.toString()).set(
                                 hashMapOf(
@@ -115,7 +119,7 @@ class AdminCreateStallActivity : AppCompatActivity() {
                             )
 
                         dataBase.collection("Stalls")
-                            .document(mBinding.createStallUserID.text.toString()).set(
+                            .document(mBinding.createStallEmail.text.toString()).set(
                                 hashMapOf(
                                     "email" to mBinding.createStallEmail.text.toString(),
                                     "phoneNumber" to mBinding.createStallPhoneNumber.text.toString(),
@@ -131,6 +135,16 @@ class AdminCreateStallActivity : AppCompatActivity() {
                 mBinding.buttonCreateStall.backgroundTintList = ColorStateList.valueOf(colorInactive)
             }
         }
+    }
+
+    private fun sendNotification(mail: String) {
+        val manejadorCorreo = emailsHandler(this,
+                                                    mail,
+                                            "Notificación Agroecologico",
+                                            "Se creo el puesto de venta")
+        manejadorCorreo.execute()
+
+
     }
 
 
