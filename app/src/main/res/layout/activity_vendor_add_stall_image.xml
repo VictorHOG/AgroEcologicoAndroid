@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VendorAddStallImage">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Imagen Del Puesto De Venta"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewAddImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H, 4:3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+    <ImageButton
+        android:id="@+id/imageButtonAddImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_add"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="@id/imageViewAddImage"
+        app:layout_constraintEnd_toEndOf="@id/imageViewAddImage"
+        app:layout_constraintTop_toTopOf="@id/imageViewAddImage"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewAddImage"/>
+
+    <Button
+        android:id="@+id/buttonAddStallImage"
+        android:layout_width="@dimen/widthButton"
+        android:layout_height="@dimen/heightButton"
+        android:background="@drawable/round_button"
+        android:text="Adicionar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAddImage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
