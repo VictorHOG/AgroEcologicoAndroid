@@ -27,6 +27,7 @@ class ProductVendorAdapter(options: FirestoreRecyclerOptions<Product>) :
         val viewBinding = ItemProductBinding.bind(itemView)
 
         val nameProduct: TextView = viewBinding.textViewNameProduct
+        val priceProduct: TextView = viewBinding.textViewPriceProduct
         val imageProduct: ImageView = viewBinding.imageViewProduct
         val overflow: ImageView = viewBinding.imageViewOptionsVendor
     }
@@ -47,6 +48,19 @@ class ProductVendorAdapter(options: FirestoreRecyclerOptions<Product>) :
         model: Product
     ) {
         holder.nameProduct.text = model.name
+
+        holder.priceProduct.text = model.price.toString()
+
+        /*var textView:String = ""
+        val listPrice = model.price
+        val count = listPrice.size
+
+        for (i in 0..(count-1)) {
+            textView += listPrice[i]
+        }*/
+        /*for (i in 0 until model.price.size) {
+            holder.priceProduct.append(model.price[i].toString())
+        }*/
 
         Glide.with(mContext)
             .load(model.urlImage)

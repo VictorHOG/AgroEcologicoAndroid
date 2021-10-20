@@ -3,21 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item_home"
+        android:id="@+id/item_home_shopper"
         android:title="@string/item_home_title"
         android:icon="@drawable/ic_home_customize"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/item_offers"
+        android:id="@+id/item_offers_shopper"
         android:title="@string/item_offers_title"
         android:icon="@drawable/ic_offer"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/item_buy"
+        android:id="@+id/item_buy_shopper"
         android:title="@string/item_buy_title"
         android:icon="@drawable/ic_shopping_cart"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_order_shopper"
+        android:title="@string/item_order_title"
+        android:icon="@drawable/ic_order"
         app:showAsAction="never"/>
 
     <item

@@ -5,6 +5,9 @@ plugins {
     id 'kotlin-kapt'
     // Add this line
     id 'com.google.gms.google-services'
+    //
+    id 'kotlin-android-extensions'
+
 }
 
 android {
@@ -19,6 +22,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    androidExtensions {
+        experimental = true
     }
 
     buildTypes {
@@ -80,6 +87,10 @@ dependencies {
     // Declare the dependency for the Cloud Storage library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-storage-ktx'
+
+    // CarouselView
+    implementation 'com.synnapps:carouselview:0.1.5'
+
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

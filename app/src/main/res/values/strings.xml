@@ -25,4 +25,5 @@
     <string name="hintStallName">Nombre del puesto de venta</string>
     <string name="hintUserID">Numero de Identificación</string>
     <string name="textButtonCreateStall">Crear Puesto de Venta</string>
+    <string name="item_order_title">Pedidos</string>
 </resources>

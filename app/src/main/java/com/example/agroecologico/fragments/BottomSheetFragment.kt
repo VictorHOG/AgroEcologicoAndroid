@@ -1,11 +1,13 @@
 package com.example.agroecologico.fragments
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import com.example.agroecologico.R
 import com.example.agroecologico.VendorAddProduct
@@ -37,6 +39,26 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
 
         mBinding.linearLayoutChangeName.setOnClickListener {
             Toast.makeText(context, "mensaje de prueba ChangeName", Toast.LENGTH_SHORT).show()
+            dismiss()
+
+            val builder = AlertDialog.Builder(requireContext())
+            val inflater = layoutInflater
+            val dialogLayout = inflater.inflate(R.layout.custom_dialog,null)
+            val editText = dialogLayout.findViewById<EditText>(R.id.editTextName)
+
+            with(builder) {
+                setTitle("Nombre Del Puesto De Venta")
+                setPositiveButton("Aceptar"){dialog, which ->
+                    Toast.makeText(context, "Boton Aceptar", Toast.LENGTH_SHORT).show()
+                    val name = editText.text.toString()
+                    Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
+                }
+                setNegativeButton("Cancelar"){dialog, which ->
+                    Toast.makeText(context, "Boton Cancelar", Toast.LENGTH_SHORT).show()
+                }
+                setView(dialogLayout)
+                show()
+            }
         }
 
         mBinding.linearLayoutAddStallImage.setOnClickListener {

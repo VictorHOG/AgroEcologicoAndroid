@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.ShopperHomeFragment">
+    tools:context=".StallDetailActivity">
 
     <com.synnapps.carouselview.CarouselView
-        android:id="@+id/carouselView"
+        android:id="@+id/carouselViewStall"
         android:layout_width="0dp"
         android:layout_height="200dp"
         app:fillColor="#FFFFFFFF"
@@ -20,15 +20,29 @@
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp" />
 
+    <TextView
+        android:id="@+id/nameStall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre Del Puesto De Venta"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carouselViewStall" />
+
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewShopperStalls"
+        android:id="@+id/recyclerViewShopperProducts"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        tools:listitem="@layout/item_card_stall"
-        app:layout_constraintTop_toBottomOf="@+id/carouselView"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_product_shopper"
+        app:spanCount="2"
+        tools:itemCount="5"
+        app:layout_constraintTop_toBottomOf="@+id/nameStall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

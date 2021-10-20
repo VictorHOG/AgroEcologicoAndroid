@@ -75,21 +75,13 @@ class VendorHomeFragment : Fragment() {
         setUpRecyclerViewProducts()
         setUpRecyclerViewMyTeam()
 
-        val bottomSheetFragment = BottomSheetFragment()
+
 
         mBinding.buttonVendor.setOnClickListener {
 
-            BottomSheetFragment().apply {
-                show(myContext.getSupportFragmentManager(), "CustomBottomSheetDialogFragment")
-            }
+            val bottomSheetFragment = BottomSheetFragment()
+            bottomSheetFragment.show(myContext.getSupportFragmentManager(), bottomSheetFragment.getTag())
 
-            //bottomSheetFragment.show(requireParentFragment(), "")
-            /*if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED
-            } else {
-                bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED
-            }*/
-            //toggleBottomSheet()
         }
 
         mBinding.recyclerViewVendorMyStall.setVisibility(View.VISIBLE)
@@ -111,24 +103,6 @@ class VendorHomeFragment : Fragment() {
             mBinding.recyclerViewVendorMyTeam.setVisibility(View.GONE)
             mBinding.recyclerViewVendorProducts.setVisibility(View.VISIBLE)
         }
-    }
-
-    private fun toggleBottomSheet(){
-
-        val view:View = getLayoutInflater().inflate(R.layout.fragment_bottom_sheet, null)
-        val changeName = view.findViewById<LinearLayout>(R.id.linearLayoutChangeName)
-
-        changeName.setOnClickListener {
-            Log.e("Change Name", "Se preiono la opcion")
-        }
-
-        val dialog:BottomSheetDialog= BottomSheetDialog(requireActivity())
-        dialog.setContentView(view)
-        dialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.show()
-
-        //Toast.makeText(requireContext(), "mensaje de prueba", Toast.LENGTH_SHORT).show()
-
     }
 
     private fun setUpRecyclerViewMyStall() {

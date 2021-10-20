@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="4">
+
+        <ImageView
+            android:id="@+id/imageViewItemProduct"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/itemProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre del producto"/>
+
+            <TextView
+                android:id="@+id/itemProductUnits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Unidades"/>
+
+            <TextView
+                android:id="@+id/itemProductPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5000 Precio por unidad"/>
+
+            <TextView
+                android:id="@+id/itemStallName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Puesto de venta"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ItemProductTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5000"
+            android:gravity="center"
+            android:textAlignment="center"/>
+
+        <ImageView
+            android:id="@+id/ItemCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_cancel"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

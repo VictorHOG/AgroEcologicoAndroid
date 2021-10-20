@@ -7,7 +7,10 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Toast
+import android.util.Log
+import android.view.View
+import android.widget.*
+import androidx.appcompat.widget.AppCompatSpinner
 import com.example.agroecologico.databinding.ActivityVendorAddProductBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
@@ -16,11 +19,13 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class VendorAddProduct : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityVendorAddProductBinding
     private var mImageUri: Uri? = null
+    private lateinit var layoutList:LinearLayout
 
     private val fAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private val userId = fAuth.getCurrentUser()?.getEmail().toString()
@@ -36,8 +41,43 @@ class VendorAddProduct : AppCompatActivity() {
         mBinding = ActivityVendorAddProductBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
+        layoutList = mBinding.linearLayoutUnitList
+
         showImageOptions()
         saveInDatabase()
+        addUnit()
+
+    }
+
+    private fun removeUnit(view:View) {
+        layoutList.removeView(view)
+    }
+
+    private fun addUnit() {
+
+        var unitList:MutableList<String> = ArrayList()
+
+        unitList.add("Libra")
+        unitList.add("Unidad")
+        unitList.add("Atao")
+
+
+        mBinding.buttonAddUnit.setOnClickListener {
+            var unitView = getLayoutInflater().inflate(R.layout.row_add_unit, null, false)
+
+            var editText:EditText = unitView.findViewById(R.id.editTextPriceUnit)
+            var spinnerUnit:AppCompatSpinner = unitView.findViewById(R.id.spinnerUnit)
+            var imageClose:ImageView = unitView.findViewById(R.id.imageViewRemove)
+
+            var arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, unitList)
+            spinnerUnit.setAdapter(arrayAdapter)
+
+            imageClose.setOnClickListener {
+                layoutList.removeView(unitView)
+            }
+
+            layoutList.addView(unitView)
+        }
     }
 
     private fun saveInDatabase() {
@@ -50,25 +90,75 @@ class VendorAddProduct : AppCompatActivity() {
 
         mBinding.buttonAddProduct.setOnClickListener {
 
-            if (mImageUri != null && mBinding.productName.text?.isNotEmpty() == true) {
-                mStorageReference.putFile(mImageUri!!)
-                    .addOnCompleteListener {}
-                    .addOnSuccessListener {
-                        mStorageReference.getDownloadUrl().addOnSuccessListener {
-                            database.collection("Products").add(
-                                hashMapOf(
-                                    "name" to mBinding.productName.text.toString(),
-                                    "stall" to userId,
-                                    "urlImage" to it.toString()
+            if (checkIfValidAndRead()) {
+
+                if (mImageUri != null){
+
+                    mStorageReference.putFile(mImageUri!!)
+                        .addOnCompleteListener {}
+                        .addOnSuccessListener {
+                            mStorageReference.getDownloadUrl().addOnSuccessListener {
+                                database.collection("Products").add(
+                                    hashMapOf(
+                                        "name" to mBinding.productName.text.toString(),
+                                        "stall" to userId,
+                                        "urlImage" to it.toString()
+                                    )
                                 )
-                            )
+                            }
+                            Toast.makeText(this, "El Producto ha sido añadido", Toast.LENGTH_SHORT).show()
                         }
-                        Toast.makeText(this, "El Producto ha sido añadido", Toast.LENGTH_SHORT).show()
-                    }
-                    .addOnFailureListener {}
-                    .addOnFailureListener {}
+                        .addOnFailureListener {}
+                        .addOnFailureListener {}
+
+                } else {
+                    Toast.makeText(this, "Debe añadir una imagen.", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
+    }
+
+    private fun checkIfValidAndRead(): Boolean {
+        var result:Boolean = true
+
+        var count = layoutList.getChildCount()
+
+        Log.d("numero ", count.toString())
+
+        if (count != 0){
+            for(i in 0..(count-1)) {
+                Log.d("numero dentro del for", i.toString())
+                var itemUnitView: View = layoutList.getChildAt(i)
+
+                var editText:EditText = itemUnitView.findViewById(R.id.editTextPriceUnit)
+                var spinnerUnit:AppCompatSpinner = itemUnitView.findViewById(R.id.spinnerUnit)
+
+                if (editText.getText().toString().equals("")) {
+                    result = false
+                    break
+                }
+
+                if (spinnerUnit.getSelectedItemPosition() == 0) {
+                    result = false
+                    break
+                }
+
+            }
+        }
+
+
+        if (mBinding.productName.text?.isNotEmpty() != true) {
+            result = false
+            Toast.makeText(this, "Debe añadir el nombre del producto.", Toast.LENGTH_SHORT).show()
+        }else if (count == 0) {
+            result = false
+            Toast.makeText(this, "Debe añadir por lo menos una unidad de venta.", Toast.LENGTH_SHORT).show()
+        }else if (!result) {
+            Toast.makeText(this, "Debe completrar los campos.", Toast.LENGTH_SHORT).show()
+        }
+
+        return result
     }
 
     private fun showImageOptions() {
